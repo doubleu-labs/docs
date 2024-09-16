@@ -1,0 +1,63 @@
+extra_css:
+- stylesheets/extra.css
+markdown_extensions: 
+- admonition
+- attr_list
+- footnotes
+- pymdownx.betterem:
+    smart_enable: all
+- pymdownx.caret
+- pymdownx.critic
+- pymdownx.details
+- pymdownx.highlight
+- pymdownx.inlinehilite
+- pymdownx.keys
+- pymdownx.mark
+- pymdownx.tilde
+- pymdownx.smartsymbols
+- pymdownx.snippets
+- pymdownx.superfences
+- pymdownx.tabbed:
+    alternate_style: true
+- pymdownx.tasklist:
+    custom_checkbox: true
+- tables
+- toc:
+    permalink: true
+nav:
+- Welcome: index.md
+plugins:
+- git-revision-date-localized:
+    enable_creation_date: true
+- search
+site_name: Doubleu Labs Documentation
+site_url: https://labs.doubleu.codes/docs
+theme:
+  features:
+  - header.autohide
+  - navigation.indexes
+  - navigation.instant
+  - navigation.tabs
+  - navigation.top
+  - search.highligh
+  - search.suggest
+  - toc.integrate
+  font: false
+  icon:
+    repo: fontawesome/brands/github
+  language: en
+  logo: https://avatars.githubusercontent.com/u/127368282
+  name: material
+  palette:
+  - scheme: default
+    media: "(prefers-color-scheme: light)"
+    primary: custom
+    toggle:
+      icon: material/toggle-switch-off-outline
+      name: Switch to dark mode
+  - scheme: slate
+    media: "(prefers-color-scheme: dark)"
+    primary: custom
+    toggle:
+      icon: material/toggle-switch
+      name: Switch to light mode
