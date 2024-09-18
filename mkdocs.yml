@@ -43,6 +43,7 @@ nav:
     - KDBX Storage: bootstrap/01-root-ca/kdbx.md
     - Initialize Root CA: bootstrap/01-root-ca/initialize.md
     - Publish CA Files: bootstrap/01-root-ca/publish.md
+    - Operation: bootstrap/01-root-ca/operation.md
 plugins:
 - git-revision-date-localized:
     enable_creation_date: true
