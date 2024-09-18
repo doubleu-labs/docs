@@ -136,7 +136,8 @@ Pull Request.
         --stdout \
         $CADATAPATH/yubikey.kdbx \
         yubikey \
-        PIN
+        PIN | \
+        keyctl padd user yk-pin @s
     )
     ```
 
