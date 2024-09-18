@@ -1,3 +1,5 @@
+copyright: Copyright &copy; 2024 W Anders
+edit_uri: edit/master/docs
 extra_css:
 - stylesheets/extra.css
 markdown_extensions: 
@@ -9,13 +11,17 @@ markdown_extensions:
 - pymdownx.caret
 - pymdownx.critic
 - pymdownx.details
+- pymdownx.emoji:
+    emoji_index: !!python/name:material.extensions.emoji.twemoji
+    emoji_generator: !!python/name:material.extensions.emoji.to_svg
 - pymdownx.highlight
 - pymdownx.inlinehilite
 - pymdownx.keys
 - pymdownx.mark
 - pymdownx.tilde
 - pymdownx.smartsymbols
-- pymdownx.snippets
+- pymdownx.snippets:
+    url_download: true
 - pymdownx.superfences
 - pymdownx.tabbed:
     alternate_style: true
@@ -26,14 +32,31 @@ markdown_extensions:
     permalink: true
 nav:
 - Welcome: index.md
+- Bootstrap:
+  - bootstrap/index.md
+  - 00 - Rundown:
+    - Hardware: bootstrap/00-rundown/hardware.md
+    - IPAM: bootstrap/00-rundown/ipam.md
+  - 01 - Root CA:
+    - Getting Started: bootstrap/01-root-ca/getting_started.md
+    - Block Storage: bootstrap/01-root-ca/block.md
+    - KDBX Storage: bootstrap/01-root-ca/kdbx.md
+    - Initialize Root CA: bootstrap/01-root-ca/initialize.md
+    - Publish CA Files: bootstrap/01-root-ca/publish.md
 plugins:
 - git-revision-date-localized:
     enable_creation_date: true
 - search
+repo_name: doubleu-labs/docs
+repo_url: https://github.com/doubleu-labs/docs
+site_author: W Anders <w@doubleu.codes>
+site_description: Doubleu Labs Documentation
 site_name: Doubleu Labs Documentation
 site_url: https://labs.doubleu.codes/docs
 theme:
   features:
+  - content.code.copy
+  - content.tabs.link
   - header.autohide
   - navigation.indexes
   - navigation.instant
