@@ -54,7 +54,7 @@ cp $CADATAPATH/ca/ca.crt $CADATAPATH/ca/DoubleU_Root_CA_01.crt
 ```
 
 ```sh
-cp $CADATAPATH/crl/ca.crl $CADATAPATH/crl/DoubleU_ROOT_CA_01.crl
+cp $CADATAPATH/crl/ca.crl $CADATAPATH/crl/DoubleU_Root_CA_01.crl
 ```
 
 Navigate to the CA repository in your browser.
