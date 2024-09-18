@@ -2,6 +2,8 @@
 
 ## Mount Storage and Prepare Environment
 
+Defined some environment variables for mounting the storage device:
+
 ```sh
 DEVICE=/dev/sdb
 USERNAME=${USER:-$(id -un)}
@@ -9,6 +11,9 @@ GROUPID=$(id -g)
 ```
 
 === "Block Device"
+
+    Only the `YKPIN` and `CADATA` partitions are required to perform CA
+    operations.
 
     ```sh
     sudo mkdir -p /run/media/$USERNAME/{YKPIN,CADATA}
@@ -29,12 +34,19 @@ GROUPID=$(id -g)
         -o uid=$USERNAME -o gid=$GROUPID
     ```
 
+    Set the paths of `YKPIN` and `CADATA`, ensuring that `CADATAPATH` is
+    exported:
+
     ```sh
     YKPINPATH=/run/media/$USERNAME/YKPIN
     export CADATAPATH=/run/media/$USERNAME/CADATA
     ```
 
 === "KDBX Database"
+
+    Only the device containing `CADATA` is required. The Linux Kernel Key
+    Retention Service will be used to load the YubiKey PIN into a temporary
+    keyring session.
 
     ```sh
     sudo mkdir -p /run/media/$USERNAME/CADATA
@@ -45,9 +57,13 @@ GROUPID=$(id -g)
         -o uid=$USERNAME -o gid=$GROUPID
     ```
 
+    Export the path of `CADATA` as `CADATAPATH`:
+
     ```sh
     export CADATAPATH=/run/media/$USERNAME/CADATA
     ```
+
+    Create a new temporary keyring session to store the YubiKey PIN:
 
     === "Default Shell"
 
@@ -61,6 +77,9 @@ GROUPID=$(id -g)
         SHELL=/bin/zsh keyctl shell
         ```
 
+    Load the YubiKey PIN from the `yubikey.kdbx` database and store the keyring
+    identifier as `KEYID_YKPIN`:
+
     ```sh
     KEYID_YKPIN=$(
         keepassxc-cli attachment-import --stdout \
@@ -72,6 +91,16 @@ GROUPID=$(id -g)
     ```
 
 ## Sign Certificate
+
+The OpenSSL configuration file in the root of `CADATA` defines the extensions of
+certificates the Root CA is intended to sign. It has been configured to  sign
+Suborinate/Issuing Certificate Authority (Sub CA) certificates using the
+`issuing_ca_ext` extension set. The `root_ca_ext` set has also been defined, but
+this is only to be used when self-signing a new Root CA certificate.
+
+!!! note
+    End-entity/leaf certificates should be signed by Sub CAs and ***not*** the
+    Root CA.
 
 === "Block Device"
 
@@ -98,6 +127,10 @@ GROUPID=$(id -g)
     -in [REQUEST].csr \
     -out [CERTIFICATE].crt.pem
     ```
+
+A certificate chain may be required containing the Root CA and new Sub CA
+certificates. Create it by concatenating the new CA certificate followed by the
+Root CA certificate:
 
 ```sh
 cat [CERTIFICATE].crt.pem $CADATAPATH/ca/ca.crt.pem > [CERTIFICATE].chain.crt.pem
