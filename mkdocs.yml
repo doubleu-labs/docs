@@ -54,6 +54,7 @@ site_description: Doubleu Labs Documentation
 site_name: Doubleu Labs Documentation
 site_url: https://labs.doubleu.codes/docs
 theme:
+  favicon: img/favicon.ico
   features:
   - content.code.copy
   - content.tabs.link
