@@ -17,10 +17,6 @@ Create the `CADATA` partition mount point:
 sudo mkdir -p /run/media/$USERNAME/CADATA
 ```
 
-```sh
-sudo chown $USERNAME:$GROUPID /run/media/$USERNAME/CADATA
-```
-
 Mount partition(s):
 
 === "Block Device"
@@ -94,10 +90,6 @@ Pull Request.
 
     ```sh
     sudo mkdir -p /run/media/$USERNAME/YKPIN
-    ```
-
-    ```sh
-    sudo chown $USERNAME:$GROUPID /run/media/$USERNAME/YKPIN
     ```
 
     Mount the `YKPIN` partition:

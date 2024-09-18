@@ -25,10 +25,6 @@ DEVICE=/dev/sdb
     sudo mkdir -p /run/media/$USERNAME/{YUBISEC,ROOTCASEC,YKPIN,CADATA}
     ```
 
-    ```sh
-    sudo chown $USERNAME:$GROUPID /run/media/$USERNAME/{YUBISEC,ROOTCASEC,YKPIN,CADATA}
-    ```
-
     Mount the `YUBISEC` partition:
 
     ```sh
@@ -112,13 +108,7 @@ DEVICE=/dev/sdb
     sudo mkdir -p /run/media/$USERNAME/CADATA
     ```
 
-    Set ownership:
-
-    ```sh
-    sudo chown $USERNAME:$GROUPID /run/media/$USERNAME/CADATA
-    ```
-
-    Mount the `CADATA` device:
+    Mount the `CADATA` device with ownership:
     
     ```sh
     sudo mount "${DEVICE}1" /run/media/$USERNAME/CADATA \

@@ -150,7 +150,7 @@ exFAT format complete!
 
 ### Mount Partition
 
-Create and `chown` a mount point for the `CADATA` partition:
+Create a mount point for the `CADATA` partition:
 
 ```sh
 USERNAME=${USER:-$(id -un)}
@@ -159,10 +159,6 @@ GROUPID=$(id -g)
 
 ```sh
 sudo mkdir -p /run/media/$USERNAME/CADATA
-```
-
-```sh
-sudo chown $USERNAME:$GROUPID /run/media/$USERNAME/CADATA
 ```
 
 ```sh
