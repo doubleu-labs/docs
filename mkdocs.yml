@@ -44,6 +44,7 @@ nav:
     - Initialize Root CA: bootstrap/01-root-ca/initialize.md
     - Publish CA Files: bootstrap/01-root-ca/publish.md
     - Operation: bootstrap/01-root-ca/operation.md
+  - 02 - Prepare Sub CA: bootstrap/02-prep-sub-ca.md
 plugins:
 - git-revision-date-localized:
     enable_creation_date: true

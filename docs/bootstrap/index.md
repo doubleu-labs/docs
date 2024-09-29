@@ -15,7 +15,7 @@ structure and plan of the Homelab.
 ### Required
 
 ```sh
-sudo dnf install util-linux jq yubico-piv-tool yubikey-manager
+sudo dnf install util-linux jq yubico-piv-tool yubikey-manager podman
 ```
 
 - `wipefs`
@@ -23,6 +23,7 @@ sudo dnf install util-linux jq yubico-piv-tool yubikey-manager
 - `jq`
 - `yubico-piv-tool`
 - `ykman`
+- `podman`
 
 CA Storage Specific:
 
