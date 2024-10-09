@@ -394,7 +394,7 @@ Read the OpenSSL CA configuration file from the cloned `bootstrap` repository at
 
 ```sh
 envsubst '$AIAURL $CDPURL' \
-< $LABBOOTSTRAPPATH/root-ca/openssl.template.cnf \
+< $LABBOOTSTRAPPATH/root-ca/openssl.cnf.tpl \
 > $CADATAPATH/openssl.cnf
 ```
 

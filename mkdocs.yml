@@ -45,6 +45,10 @@ nav:
     - Publish CA Files: bootstrap/01-root-ca/publish.md
     - Operation: bootstrap/01-root-ca/operation.md
   - 02 - Prepare Sub CA: bootstrap/02-prep-sub-ca.md
+  - 03 - Prepare to go Offline: bootstrap/03-prep-offline.md
+  - Offline Setup:
+    - 04 - OOBM Srv: bootstrap/offline-setup/04-oobm-srv.md
+    - 05 - Switch Setup: bootstrap/offline-setup/05-switch-setup.md
 plugins:
 - git-revision-date-localized:
     enable_creation_date: true

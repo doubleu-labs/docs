@@ -35,7 +35,7 @@ directory while using the `step-cli` client container.
 Set environment variables to the CA path:
 
 ```sh
-STEPCAPATH=$LABBOOTSTRAPPATH/.working/step-ca/
+STEPCAPATH=$LABBOOTSTRAPPATH/step-ca/ca
 ```
 
 Create a directory in `STEPCAPATH` for certificates, password files, and
@@ -227,7 +227,7 @@ step-ca \
 ## Start Step CLI Client
 
 ```sh
-STEPCLIENTPATH=$LABBOOTSTRAPPATH/.working/step-client
+STEPCLIENTPATH=$LABBOOTSTRAPPATH/step-ca/client
 ```
 
 Make a separate directory for provisioner password files:
@@ -246,7 +246,7 @@ podman run --rm -it \
 --volume=$STEPCLIENTPATH:/home/step:z \
 --volume=$STEPCAPATH/passwords/provisioners:/passwords/provisioners:z \
 --volume=$STEPCAPATH/passwords/x509_ca:/passwords/x509_ca:z \
---volume=$LABBOOTSTRAPPATH/sub-ca:/bootstrap:z \
+--volume=$LABBOOTSTRAPPATH/step-ca/templates:/templates:z \
 docker.io/smallstep/step-cli:latest
 ```
 
@@ -418,7 +418,7 @@ template restricts signed certificates to RSA and Ed25519 key types:
 step ca provisioner add ssh@home.doubleu.codes --type=JWK --create \
 --ssh \
 --password-file=/passwords/provisioners/ssh_home.doubleu.codes \
---ssh-template=/bootstrap/template_ssh.tpl \
+--ssh-template=/templates/template_ssh.tpl \
 --admin-subject=admin@home.doubleu.codes \
 --admin-provisioner=admin@home.doubleu.codes \
 --admin-password-file=/passwords/provisioners/admin_home.doubleu.codes
@@ -450,14 +450,14 @@ carefully before signing with this provisioner.
 Copy the template data file and modify it for your environment:
 
 ```sh
-cp /bootstrap/template_x509.issuer.data_tpl /bootstrap/template_x509.issuer.data
+cp /templates/issuer_template_x509.data.tpl /template/issuer_template_x509.data
 ```
 
 In this data file, there is a field for the CRL Distribution Point (CDP) and
 Authority Information Access (AIA) URLs. For example, my environment would be
 configured something like this:
 
-```json title="/bootstrap/template_x509.issuer.data"
+```json title="/templates/issuer_template_x509.data"
 {
     "AIA": "https://ca.home.doubleu.codes/intermediates.pem",
     "CDP": "http://ca.home.doubleu.codes/crl"
@@ -479,8 +479,8 @@ duration here is set to 397 to allow some leway in time zones.
 step ca provisioner add issuer@home.doubleu.codes --type=JWK --create \
 --ssh=false \
 --password-file=/passwords/provisioners/issuer_home.doubleu.codes \
---x509-template=/bootstrap/template_x509.issuer.tpl \
---x509-template-data=/bootstrap/template_x509.issuer.data \
+--x509-template=/templates/issuer_template_x509.tpl \
+--x509-template-data=/templates/issuer_template_x509.data \
 --x509-max-dur='9528h' \
 --x509-default-dur='9528h' \
 --admin-subject=admin@home.doubleu.codes \
