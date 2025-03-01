@@ -1,9 +1,22 @@
 # Welcome to DoubleU Labs
 
-This contains the documentation for the DoubleU Labs Homelab.
+Welcome to DoubleU Labs docs.
 
-:construction:      :construction:      :construction:
+This site contains writeups of all of the projects that comprise my Homelab.
 
-This is still under construction, so don't mind the mess.
+:construction: It is still very much under construction, so don't mind the mess.
 
-:construction:      :construction:      :construction:
+## Showcase
+
+- [root-ca](./root_ca/index.md): This is how I set up my own Root Certificate
+Authority (CA) using a YubiKey and deployed the assets to Github Pages using a
+script-based toolkit I developed
+([`ca-bootstrap`](https://github.com/doubleu-labs/ca-bootstrap){target="\_blank"}).
+
+## The Future
+
+I've got quite a few projects in the works involving Kubernetes, out-of-band
+management, hardware bootstrapping, and several service integrations.
+
+Once the processes of these projects are finalized, the full documentation will
+be published here, so be in the lookout.

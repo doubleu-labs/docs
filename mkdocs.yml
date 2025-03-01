@@ -1,4 +1,4 @@
-copyright: Copyright &copy; 2024 W Anders
+copyright: Copyright &copy; 2025 W Anders
 edit_uri: edit/master/docs
 extra_css:
 - stylesheets/extra.css
@@ -32,23 +32,21 @@ markdown_extensions:
     permalink: true
 nav:
 - Welcome: index.md
-- Bootstrap:
-  - bootstrap/index.md
-  - 00 - Rundown:
-    - Hardware: bootstrap/00-rundown/hardware.md
-    - IPAM: bootstrap/00-rundown/ipam.md
-  - 01 - Root CA:
-    - Getting Started: bootstrap/01-root-ca/getting_started.md
-    - Block Storage: bootstrap/01-root-ca/block.md
-    - KDBX Storage: bootstrap/01-root-ca/kdbx.md
-    - Initialize Root CA: bootstrap/01-root-ca/initialize.md
-    - Publish CA Files: bootstrap/01-root-ca/publish.md
-    - Operation: bootstrap/01-root-ca/operation.md
-  - 02 - Prepare Sub CA: bootstrap/02-prep-sub-ca.md
-  - 03 - Prepare to go Offline: bootstrap/03-prep-offline.md
-  - Offline Setup:
-    - 04 - OOBM Srv: bootstrap/offline-setup/04-oobm-srv.md
-    - 05 - Switch Setup: bootstrap/offline-setup/05-switch-setup.md
+- Root CA:
+  - root_ca/index.md
+  - (Optional) DNS: root_ca/dns/index.md
+  - CA Template: root_ca/ca_template/index.md
+  - Github App: root_ca/github_app/index.md
+  - Bootstrap CA: root_ca/bootstrap.md
+  - Database Security: root_ca/database_security/index.md
+  - Deploy and Wrap Up: root_ca/deploy_wrap_up.md
+  - CA Operation: root_ca/operation.md
+- Hardware:
+  - hardware/index.md
+- Software:
+  - software/index.md
+- Integrations:
+  - integrations/index.md
 plugins:
 - git-revision-date-localized:
     enable_creation_date: true
@@ -56,8 +54,8 @@ plugins:
 repo_name: doubleu-labs/docs
 repo_url: https://github.com/doubleu-labs/docs
 site_author: W Anders <w@doubleu.codes>
-site_description: Doubleu Labs Documentation
-site_name: Doubleu Labs Documentation
+site_description: Doubleu Labs
+site_name: Doubleu Labs
 site_url: https://labs.doubleu.codes/docs
 theme:
   favicon: img/favicon.ico
@@ -65,7 +63,6 @@ theme:
   - content.code.copy
   - content.tabs.link
   - header.autohide
-  - navigation.indexes
   - navigation.instant
   - navigation.tabs
   - navigation.top
