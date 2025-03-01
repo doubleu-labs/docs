@@ -19,6 +19,29 @@ In the repository settings, navigate to `Code and automation`, then click
 
 ![Enable Pages Action](./img/enable_pages_action.png)
 
+Ensure that `Enfore HTTPS` is disabled.
+
+![Disable Enforce HTTPS](./img/disable_enforce_https.png)
+
+!!! note 
+    [RFC 5280](https://datatracker.ietf.org/doc/html/rfc5280){target="\_blank"}
+    defines the X.509 standard and how assets are to be distributed.
+
+    - [&#167; 4.2.1.13](https://datatracker.ietf.org/doc/html/rfc5280#section-4.2.1.13){target="\_blank"} -
+    CRL Distribution Points (CDP)
+    - [&#167; 4.2.2.1](https://datatracker.ietf.org/doc/html/rfc5280#section-4.2.2.1){target="\_blank"} -
+    Authority Information Access (AIA)
+
+    Both AIA certificate and CDP CRL ***MUST*** be DER encoded and accessible
+    from unencrypted HTTP requests. Some PKI implementations (notably Windows'
+    `CryptoAPI`) strictly adhere to the RFC and will fail if either of these
+    extensions contain HTTPS URIs, though *most* applications will retrieve them
+    either way.
+
+    Not having encryption isn't an issue since certificates and CRLs are
+    cryptographically signed and integrity can be verified independent of the
+    transport methodology.
+
 ## (Optional) Add CNAME
 
 If you're using a custom domain, create a file named `CNAME` in the root of the

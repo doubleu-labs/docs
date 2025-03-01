@@ -19,7 +19,28 @@ domain will need to point to Github Pages.
 If you're using a nested subdomain, such as `ca.org.example.com`, then
 `org.example.com` will need to point to Github Pages.
 
-Be sure to set the `Proxy status` of each record to `DNS only`.
+Be sure to set the `Proxy status` of each record to `DNS only`. This is done
+because Github's Pages server IP addresses are public, and it prevents
+Cloudflare from redirecting requests to HTTPS and injecting TLS certificates.
+
+!!! note 
+    [RFC 5280](https://datatracker.ietf.org/doc/html/rfc5280){target="\_blank"}
+    defines the X.509 standard and how assets are to be distributed.
+
+    - [&#167; 4.2.1.13](https://datatracker.ietf.org/doc/html/rfc5280#section-4.2.1.13){target="\_blank"} -
+    CRL Distribution Points (CDP)
+    - [&#167; 4.2.2.1](https://datatracker.ietf.org/doc/html/rfc5280#section-4.2.2.1){target="\_blank"} -
+    Authority Information Access (AIA)
+
+    Both AIA certificate and CDP CRL ***MUST*** be DER encoded and accessible
+    from unencrypted HTTP requests. Some PKI implementations (notably Windows'
+    `CryptoAPI`) strictly adhere to the RFC and will fail if either of these
+    extensions contain HTTPS URIs, though *most* applications will retrieve them
+    either way.
+
+    Not having encryption isn't an issue since certificates and CRLs are
+    cryptographically signed and integrity can be verified independent of the
+    transport methodology.
 
 ### A
 
