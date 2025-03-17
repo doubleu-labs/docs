@@ -149,4 +149,4 @@ rm ./kdbx/*.key
 
 ## Next
 
-Finally, we'll cover [CA Operation](../operation.md).
+Finally, we'll [deploy the assets and wrap up](../deploy_wrap_up.md).

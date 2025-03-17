@@ -78,3 +78,7 @@ You should be left with only the archive and optionally the signature in the
 `ca-bootstrap` directory. If you have these stored elsewhere (and you should at
 this point), you can safely delete the entire `ca-bootstrap` directory if you
 wish.
+
+## Next
+
+Check out [CA operation](./operation.md) to see how to work with the CA.
